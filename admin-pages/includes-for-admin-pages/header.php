@@ -8,4 +8,5 @@
     <title>Admin page</title>
     <link rel="stylesheet" href="./../../css/style.css">
     <script src="https://kit.fontawesome.com/0e15907de1.js" crossorigin="anonymous"></script>
+
 </head>

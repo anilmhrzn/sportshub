@@ -1,6 +1,10 @@
+<?php
+session_start();
+?>
+
 <body>
     <nav class="display-grid">
-        <ul class="company-logo remove-list-style" >
+        <ul class="company-logo remove-list-style">
             <li class="first-part">
                 Sports
             </li>
@@ -9,30 +13,52 @@
             </li>
         </ul>
         <ul class="remove-list-style  options-navbar">
-            <li>
-                <span>
-                    Home
-                </span>
+            <li onclick="loadHomePage();">
+
+                <span>Home</span>
+
             </li>
             <li class="for-products">
                 <span>
                     Category
                 </span>
                 <ul class="dropdown-block remove-list-style">
-                    <li>Football</li>
-                    <li>Cricket</li>
-                    <li>BasketBall</li>
-                    <li>Table Tennis</li>
-                    <li>volley Ball</li>
-                    <li>Badminton</li>
-
+                <?php
+include './../includes/db_config.php';
+$sql='SELECT name FROM categories';
+$result=mysqli_query($conn,$sql);
+if(mysqli_num_rows($result)>0){
+    while($row=mysqli_fetch_assoc($result)){
+?>
+    
+    <li onclick="show_certain_page('<?=$row['name']?>');">
+        <?=$row['name']?>
+    </li>
+<?php
+    }
+}
+else{
+    echo 'no records to show.';
+}
+?>
+                        <!-- <li onclick="show_certain_page('football-page.php');">Football</li>
+                        <li onclick="show_certain_page('cricket-page.php');">Cricket
+                        </li>
+                        <li onclick="show_certain_page('basketball-page.php');">BasketBall
+                        </li>
+                        <li onclick="show_certain_page('tabletennis-page.php');">Table Tennis
+                        </li>
+                        <li onclick="show_certain_page('volleyball-page.php');">Volleyball
+                        </li>
+                        <li onclick="show_certain_page('badminton-page.php');">Badminton
+                        </li> -->
                 </ul>
             </li>
-            <li class="for-products">
+            <li class="for-feedback">
                 <span>
                     Feedback
                 </span>
-                <ul class="dropdown-block remove-list-style for-feedback">
+                <ul class="remove-list-style feedback-class">
                     <li>
                         <textarea name="feedback" id="" cols="30" rows="10" placeholder="Enter your feedback here............."></textarea>
                     </li>
@@ -48,15 +74,44 @@
                     <i class="login-icon fab fa-solid fa-right-to-bracket">
                     </i>
                 </span>
-                <ul class="dropdown-blocks remove-list-style">
-                    <li>
-                        <span>login</span>
-                    </li>
-                    <li>
-                        <span>Register</span>
-                    </li>
-                </ul>
+                <?php if (!isset($_SESSION['USER_ID']) && !isset($_SESSION['USER_NAME'])) {
 
+                ?>
+                    <ul class="dropdown-blocks remove-list-style" onclick="window.location.href='./../pages/files-for-main-content/customer-login.php'">
+                        <li>
+                            <span>login</span>
+                        </li>
+                        <li>
+                            <span>Register</span>
+                        </li>
+                    </ul>
+
+                <?php
+                } else {
+                ?>
+                    <ul class="dropdown-blocks remove-list-style">
+                        <li onclick="logout_function()">
+                            <span>logout</span>
+                        </li>
+                        <li>
+                            <span>change password</span>
+                        </li>
+                    </ul>
+                <?php
+                }
+                ?>
             </li>
         </ul>
     </nav>
+    <script>
+        function logout_function() {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    location.reload();
+                }
+            };
+            request.open("GET", "./../pages/files-for-main-content/logout.php", true);
+            request.send();
+        }
+    </script>
