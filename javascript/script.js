@@ -53,7 +53,7 @@ function next() {
   if (limit > i) {
     i++;
     if (limit > i) {
-      // console.log(i);
+      console.log(i);
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -86,7 +86,7 @@ function prev() {
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById("demo").innerHTML = this.responseText;
-        // console.log(i);
+        console.log(i);
       }
     };
     xhttp.open(
