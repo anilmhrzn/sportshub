@@ -12,46 +12,18 @@ session_start();
                 Hub
             </li>
         </ul>
-        <ul class="remove-list-style  options-navbar">
-            <li onclick="loadHomePage();">
+        <ul class="remove-list-style  options-navbar" >
+            <li onclick="loadHomePage();" id="home_navbar_options">  
 
                 <span>Home</span>
 
             </li>
-            <li class="for-products">
+            <li class="for-products" id="Categories_navbar_options">
                 <span>
-                    Category
+                    Categories
                 </span>
                 <ul class="dropdown-block remove-list-style">
-                <?php
-include './../includes/db_config.php';
-$sql='SELECT name FROM categories';
-$result=mysqli_query($conn,$sql);
-if(mysqli_num_rows($result)>0){
-    while($row=mysqli_fetch_assoc($result)){
-?>
-    
-    <li onclick="show_certain_page('<?=$row['name']?>');">
-        <?=$row['name']?>
-    </li>
-<?php
-    }
-}
-else{
-    echo 'no records to show.';
-}
-?>
-                        <!-- <li onclick="show_certain_page('football-page.php');">Football</li>
-                        <li onclick="show_certain_page('cricket-page.php');">Cricket
-                        </li>
-                        <li onclick="show_certain_page('basketball-page.php');">BasketBall
-                        </li>
-                        <li onclick="show_certain_page('tabletennis-page.php');">Table Tennis
-                        </li>
-                        <li onclick="show_certain_page('volleyball-page.php');">Volleyball
-                        </li>
-                        <li onclick="show_certain_page('badminton-page.php');">Badminton
-                        </li> -->
+                <?php include './../pages/for-dropdown-contents/for_list_of_categories.php'; ?>
                 </ul>
             </li>
             <li class="for-feedback">
@@ -68,7 +40,7 @@ else{
         </ul>
         <ul class="remove-list-style flex-justify-space-between searcbar-login-logout">
             <li><input type="search" name="itemSearch" id="itemSearch"><input type="submit" name="" id=""></li>
-            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-cart-shopping cartIcon" onclick="viewCart()">s</i>
             <li class="for-login-dropdown">
                 <span>
                     <i class="login-icon fab fa-solid fa-right-to-bracket">

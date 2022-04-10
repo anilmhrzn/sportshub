@@ -24,7 +24,6 @@ if (isset($_POST['login'])) {
         }
     } else {
         $error_message = "please enter valid <br> username and password";
-        $error_message = "lauda";
         // $error_message ='sucessful';
     }
 }

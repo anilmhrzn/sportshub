@@ -1,4 +1,4 @@
-@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+/* @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css"); */
 :root {
   /* --mainBgColor: white; */
   --mainBgColor: #f2aa4cff;
@@ -95,7 +95,7 @@ nav.display-grid {
 .dropdown-block ,.feedback-class {
   display: none;
   position: absolute;
-  top: 49px;
+  top: 48px;
   /* width: 7vw; */
 }
 .for-products:hover .dropdown-block ,.for-feedback:hover .feedback-class {
@@ -111,14 +111,24 @@ nav.display-grid {
   cursor: pointer;
 }
 
-.options-navbar > li:hover {
+.active_for_navbar_options {
+  border: 1px inset var(--mainBgColor);
+  box-sizing: border-box;
+  color: var(--mainTextColor);
+  cursor: pointer;
+  
+}
+.options-navbar > li:hover{
   background-color: var(--mainBgColor);
   color: var(--secondBgColor);
   cursor: pointer;
-}
+  /* text-decoration: underline white; */
+  /* border-bottom: white; */
+  /* background-color: blue; */
+} 
 .dropdown-block > li:hover,
 .dropdown-blocks > li:hover {
-  text-decoration: underline;
+  text-decoration: underline ;
   /* transform: scale(1.5); */
 }
 .dropdown-block > li,
@@ -156,6 +166,9 @@ nav.display-grid {
   background-color: var(--mainBgColor);
   color: var(--mainTextColor);
   cursor: pointer;
+}
+.cartIcon{
+cursor: pointer;
 }
 /* for main body */
 .main-content {
@@ -233,12 +246,17 @@ div.popular-picks-grid {
   font-size: 1.4rem;
   display: flex;
 }
+/* .sub_catergories .active{
+  cursor: pointer;
+  border-radius: 3px;
+  background-color:#00a4ccff ;
+} */
 .sub_catergories>li{
  border-bottom:1px solid black ;
  border-top:1px solid black ;
  padding: 3px 1vw;
 }
-.sub_catergories>li:hover{
+.sub_catergories>li:hover ,.sub_catergories .active{
   cursor: pointer;
   border-radius: 3px;
   background-color:#00a4ccff ;
@@ -251,12 +269,132 @@ div.popular-picks-grid {
   margin: 5vh 2vw;
   border: 1px solid black;
 } 
-.grid-four > p{
+.grid-four > div{
   width: 100%;
   margin: 5vh auto;
   border: 1px solid black;
-  padding: 10px;
+  padding: 30px;
+  border-radius: 40px;
+  
+  /* box-shadow: 0 5px 20px rgba(8, 112, 184, 0.7); */
+  box-shadow: inset -12px -8px 40px #464646;
 }
 .product-image{
   width: 15vw;
+}
+.grid-four > div>  button,.grid-four > div>  input{
+  margin: 5px;
+}
+
+
+
+
+
+/* this is for footer */
+
+
+
+
+
+/* footer{
+
+  display: flex;
+  justify-content: center;
+}
+.footer-part{
+  height: 80vh;
+  background-color: red;
+  width: 95vw;
+} */
+
+.large-font-size {
+  font-size: 2rem;
+}
+.for-about-us-section {
+  margin: 0 5vw;
+  /* background-image: url(./../images_for_main_page/aboutUs.jpg); */
+  height: 50vh;
+  color: var(--mainTextColor);
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 3px solid #00203fff; */
+  border: 3px solid var(--secondBgColor);
+  /* z-index: -11; */
+}
+.aboutUsStyle {
+  position: relative;
+  /* top: 20px; */
+  /* background-color: #00203fff; */
+  background-color: var(--secondBgColor);
+  color: var(--mainTextColor);
+  width: fit-content;
+  text-align: center;
+  padding: 4px 5px;
+  margin: auto;
+  z-index: -1;
+}
+.for-about-us-text {
+  text-align: center;
+  /* text-shadow: 2px 2px black; */
+}
+.for-footer {
+  /* background-color: #00203fff; */
+  background-color: var(--secondBgColor);
+  /* color: #adefd1ff; */
+  color: var(--mainTextColor);
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr; */
+  margin: 5vw;
+}
+.for-margin{
+  padding: 8vh 0 0 0;
+  /* display: inline; */
+}
+.for-margin:last-child{
+  padding: 8vh 0 10vh 0;
+}
+/* p:last-child {
+  background: #ff0000;
+} */
+div.center-row-wise {
+  text-align: center;
+}
+div.center-row-wise>a{
+  text-decoration: none;
+  color: #adefd1ff;
+}
+
+  /* display: flex;
+  justify-content: center; */
+  /* display: flex;
+justify-content: center;
+align-items: center; */
+/* } */
+h1.center-row-wise {
+  /* background-color: #adefd1ff; */
+  /* color: #00203fff; */
+  width: fit-content;
+  margin: auto;
+
+  margin-bottom: 4vh;
+  /* padding: 2vw; */
+
+
+}
+.forSocialIcons {
+  /* background-color: #adefd1ff; */
+  color: var(--mainTextColor);
+  margin: 5px;
+  padding: 1vw;
+  /* height: 2.5rem;
+  width: 2.5rem; */
+  font-size: 1.7rem;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.forSocialIcons:hover{
+  transform: scale(1.2);
+  cursor: pointer;
 }

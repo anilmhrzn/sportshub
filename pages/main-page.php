@@ -1,4 +1,4 @@
-
+<!-- 
 
     <div class="main-content">
         <div>
@@ -26,7 +26,7 @@
             <input type="submit" value="Go Forward">
         </form>
 
-    </div>
+    </div> -->
     <?php include './files-for-main-content/popular-picks.php'?>
 
 
