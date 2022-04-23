@@ -16,8 +16,8 @@
         <div class="for-about-us-section">
             <div>
                 <span class="large-font-size for-about-us-text">
-                    "Food paradise is all about <br> <br>
-                    serving high qulaity foods to customers <br> <br> through a website to your doorsteps."
+                    "Sportshub is all about <br> <br>
+                    serving high qulaity products to customers <br> <br> through a website to your doorsteps."
                 </span>
             </div>
         </div>

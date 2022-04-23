@@ -1,0 +1,1 @@
+<?php echo 'from get_data.php';?>

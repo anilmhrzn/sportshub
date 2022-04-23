@@ -133,7 +133,6 @@ function show_certain_page(page_name) {
   };
   xhttp.open("GET", "./../pages/show_certain_category_page.php?categoryName="+page_name, true);
   xhttp.send();
-  
 }
 
 function showProductsOfGivenSubcategories(categoryName,sub_categories_name){

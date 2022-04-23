@@ -40,7 +40,7 @@ session_start();
         </ul>
         <ul class="remove-list-style flex-justify-space-between searcbar-login-logout">
             <li><input type="search" name="itemSearch" id="itemSearch"><input type="submit" name="" id=""></li>
-            <i class="fa-solid fa-cart-shopping cartIcon" onclick="viewCart()">s</i>
+            <i class="fa-solid fa-cart-shopping cartIcon" onclick="viewCart()"></i>
             <li class="for-login-dropdown">
                 <span>
                     <i class="login-icon fab fa-solid fa-right-to-bracket">
@@ -49,9 +49,9 @@ session_start();
                 <?php if (!isset($_SESSION['USER_ID']) && !isset($_SESSION['USER_NAME'])) {
 
                 ?>
-                    <ul class="dropdown-blocks remove-list-style" onclick="window.location.href='./../pages/files-for-main-content/customer-login.php'">
-                        <li>
-                            <span>login</span>
+                    <ul class="dropdown-blocks remove-list-style" >
+                        <li onclick="window.location.href='./../pages/files-for-main-content/customer-login.php'">
+                            <span>Login</span>
                         </li>
                         <li>
                             <span>Register</span>
@@ -63,10 +63,10 @@ session_start();
                 ?>
                     <ul class="dropdown-blocks remove-list-style">
                         <li onclick="logout_function()">
-                            <span>logout</span>
+                            <span>Logout</span>
                         </li>
                         <li>
-                            <span>change password</span>
+                            <span>Change Password</span>
                         </li>
                     </ul>
                 <?php
