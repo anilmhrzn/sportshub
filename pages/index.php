@@ -1,3 +1,7 @@
+<!-- <?php
+// session_start();
+// unset($_SESSION['cart']);
+?> -->
 <?php
 include './../includes/header.php';
 include './../includes/navbar.php';

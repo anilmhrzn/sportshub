@@ -16,7 +16,7 @@ f2aa4cff */
   padding: 0;
   box-sizing: border-box;
 }
-nav{
+nav {
   display: flex;
   align-items: center;
 }
@@ -85,24 +85,27 @@ nav.display-grid {
 .searcbar-login-logout {
   padding: 0 1vw;
 }
-.searcbar-login-logout > li > input[type="search"] {
+.searcbar-login-logout > li > form > input[type="search"] {
   width: 20vw;
   height: 2rem;
   font-size: 1.2rem;
   /* margin:; */
+  padding: 2px;
 }
-.searcbar-login-logout > li > input[type="submit"] {
+.searcbar-login-logout > li > form > input[type="submit"] {
   padding: 4px;
   margin-left: 1vw;
 }
 /* dropdown menu */
-.dropdown-block ,.feedback-class {
+.dropdown-block,
+.feedback-class {
   display: none;
   position: absolute;
   top: 48px;
   /* width: 7vw; */
 }
-.for-products:hover .dropdown-block ,.for-feedback:hover .feedback-class {
+.for-products:hover .dropdown-block,
+.for-feedback:hover .feedback-class {
   display: block;
   background-color: var(--mainBgColor);
   color: var(--mainTextColor);
@@ -120,23 +123,23 @@ nav.display-grid {
   box-sizing: border-box;
   color: var(--mainTextColor);
   cursor: pointer;
-  
 }
-.options-navbar > li:hover{
+.options-navbar > li:hover {
   background-color: var(--mainBgColor);
   color: var(--secondBgColor);
   cursor: pointer;
   /* text-decoration: underline white; */
   /* border-bottom: white; */
   /* background-color: blue; */
-} 
+}
 .dropdown-block > li:hover,
 .dropdown-blocks > li:hover {
-  text-decoration: underline ;
+  text-decoration: underline;
   /* transform: scale(1.5); */
 }
 .dropdown-block > li,
-.dropdown-blocks > li , .feedback-class > li{
+.dropdown-blocks > li,
+.feedback-class > form > li {
   text-decoration: none;
   color: var(--secondBgColor);
   display: flex;
@@ -145,12 +148,12 @@ nav.display-grid {
   padding: 6px 25px;
   cursor: pointer;
 }
-.feedback-class > li input {
+.feedback-class > form > li input {
   background-color: green;
   padding: 5px;
   width: 90%;
 }
-.feedback-class > li input:hover {
+.feedback-class > form > li input:hover {
   background-color: rgb(10, 148, 10);
 }
 
@@ -171,8 +174,8 @@ nav.display-grid {
   color: var(--mainTextColor);
   cursor: pointer;
 }
-.cartIcon{
-cursor: pointer;
+.cartIcon {
+  cursor: pointer;
 }
 /* for main body */
 .main-content {
@@ -194,6 +197,40 @@ cursor: pointer;
 
 .center-align {
   text-align: center;
+}
+/* container For Product */
+.containerForProduct {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0;
+  border: 1px solid black;
+  flex-direction: column;
+  padding: 10px;
+}
+/*for  price Of Product */
+.priceOfProduct {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* text-align:center */
+.align-center {
+  text-align: center;
+}
+
+.imageOfProduct {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+/* for add to cart  */
+.add_to_cart {
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 4px;
+  display: flex;
+  justify-content: space-around;
 }
 
 /* for hot picks */
@@ -238,15 +275,15 @@ div.popular-picks-grid {
 #leftArrowAndRightArrow:hover {
   background-color: rgb(219, 218, 218);
 }
-.bgColorForCategory{
-  background-color: #00a4ccff ;
+.bgColorForCategory {
+  background-color: #00a4ccff;
   padding: 4px;
-  margin:1vw 0 1vw 1vw ;
+  margin: 1vw 0 1vw 1vw;
   border-radius: 3px;
   font-size: 2rem;
   width: fit-content;
 }
-.sub_catergories{
+.sub_catergories {
   font-size: 1.4rem;
   display: flex;
 }
@@ -255,50 +292,44 @@ div.popular-picks-grid {
   border-radius: 3px;
   background-color:#00a4ccff ;
 } */
-.sub_catergories>li{
- border-bottom:1px solid black ;
- border-top:1px solid black ;
- padding: 3px 1vw;
+.sub_catergories > li {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding: 3px 1vw;
 }
-.sub_catergories>li:hover ,.sub_catergories .active{
+.sub_catergories > li:hover,
+.sub_catergories .active {
   cursor: pointer;
   border-radius: 3px;
-  background-color:#00a4ccff ;
+  background-color: #00a4ccff;
 }
-.grid-four{
+.grid-four {
   display: grid;
-  grid-template-columns:1fr 1fr 1fr 1fr     ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 5vh;
   padding: 20px;
   margin: 5vh 2vw;
   border: 1px solid black;
-} 
-.grid-four > div{
+}
+.grid-four > div {
   width: 100%;
   margin: 5vh auto;
   border: 1px solid black;
   padding: 30px;
   border-radius: 40px;
-  
+
   /* box-shadow: 0 5px 20px rgba(8, 112, 184, 0.7); */
   box-shadow: inset -12px -8px 40px #464646;
 }
-.product-image{
+.product-image {
   width: 15vw;
 }
-.grid-four > div>  button,.grid-four > div>  input{
+.grid-four > div > button,
+.grid-four > div > input {
   margin: 5px;
 }
 
-
-
-
-
 /* this is for footer */
-
-
-
-
 
 /* footer{
 
@@ -352,11 +383,11 @@ div.popular-picks-grid {
   /* grid-template-columns: 1fr 1fr; */
   margin: 5vw;
 }
-.for-margin{
+.for-margin {
   padding: 8vh 0 0 0;
   /* display: inline; */
 }
-.for-margin:last-child{
+.for-margin:last-child {
   padding: 8vh 0 10vh 0;
 }
 /* p:last-child {
@@ -365,14 +396,14 @@ div.popular-picks-grid {
 div.center-row-wise {
   text-align: center;
 }
-div.center-row-wise>a{
+div.center-row-wise > a {
   text-decoration: none;
   color: #adefd1ff;
 }
 
-  /* display: flex;
+/* display: flex;
   justify-content: center; */
-  /* display: flex;
+/* display: flex;
 justify-content: center;
 align-items: center; */
 /* } */
@@ -384,8 +415,6 @@ h1.center-row-wise {
 
   margin-bottom: 4vh;
   /* padding: 2vw; */
-
-
 }
 .forSocialIcons {
   /* background-color: #adefd1ff; */
@@ -398,7 +427,28 @@ h1.center-row-wise {
   border-radius: 50%;
   transition: transform 0.2s;
 }
-.forSocialIcons:hover{
+.forSocialIcons:hover {
   transform: scale(1.2);
   cursor: pointer;
+}
+
+/* button For Payment Options */
+.buttonForPaymentOptions {
+  font-size: 1.2rem;
+  padding: 4px;
+}
+/* payment Methods Container */
+.paymentMethodsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+.paymentMethodSubContainer {
+  padding: 30px;
+  width: 45vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px;
 }

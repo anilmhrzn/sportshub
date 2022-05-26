@@ -12,8 +12,8 @@
 <a class="btn btn-dark m-5" href="./index.php" role="button">Back</a> <span>Products Information</span>
 
 <div id="productsShowing" class="h-100 d-flex justify-content-center align-items-center">
-    
-    <table class="table table-dark table-hover m-1" style="width: auto;">
+    <table class="table table-dark table-hover m-3" style="width: auto;">
+    <!-- table table-dark table-hover m-3 -->
         <th style="text-align: center;">Name</th>
         <th style="text-align: center;">Category</th>
         <th style="text-align: center;">Sub category</th>
@@ -22,7 +22,7 @@
         <th style="text-align: center;">Options</th>
         <?php
         include './../includes/db_config.php';
-        $query = "SELECT products.name as productsName,products.price as productsPrice,products.description as productsDescription,categories.name as categoriesName,sub_categories.name as subCategoriesName from products INNER JOIN categories on products.category_id=categories.id INNER JOIN sub_categories on products.sub_categories_id=sub_categories.id ";
+        $query = "SELECT products.id as id,products.name as productsName,products.price as productsPrice,products.description as productsDescription,categories.name as categoriesName,sub_categories.name as subCategoriesName from products INNER JOIN categories on products.category_id=categories.id INNER JOIN sub_categories on products.sub_categories_id=sub_categories.id  where products.status = 1";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
             // print_r(mysqli_fetch_assoc($result));
@@ -35,10 +35,12 @@
                     <td><?= $row['productsPrice']; ?></td>
                     <td><?= $row['productsDescription']; ?></td>
                     <td>
-                        <button type="button" class="btn btn-warning mx-4">Edit</button>
-                        <!-- onclick="editUser(<?= $row['id']; ?>);" -->
-                        <button type="button" class="btn btn-danger">Remove</button>
-                        <!-- onclick="removeUser(<?= $row['id']; ?>);" -->
+                        <a class="btn btn-warning mx-4" href="./add_new_product.php?id=<?= $row['id'] ?>">
+                            <!-- <button type="button" class="btn btn-warning mx-4"> -->
+                                Edit
+                            <!-- </button> -->
+                        </a>
+                        <button type="button" class="btn btn-danger" onclick="removeProduct(<?= $row['id']; ?>);">Remove</button>
                     </td>
                 </tr>
             <?php
@@ -57,12 +59,10 @@
 
 </div>
 <div class="d-flex justify-content-center align-items-center my-2">
+    <a href="./add_new_product.php">
 
-    <button type="button" class="btn btn-outline-info" id="addNewProductBtn"
-    
-    
-    onclick="addNewProduct()"
-    > Add New Product</button>
+        <button type="button" class="btn btn-outline-info" id="addNewProductBtn"> Add New Product</button>
+    </a>
 </div>
 
 

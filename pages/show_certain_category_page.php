@@ -30,7 +30,7 @@
 <br> -->
 <!-- <hr> -->
 <div id='products'>
-<script>
+<!-- <script>
     document.getElementsByTagName
-</script>
+</script> -->
 </div>

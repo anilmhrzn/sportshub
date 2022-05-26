@@ -12,19 +12,45 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
 ?>
 <div class="inside-popular-picks-grid">
-<img src="<?= $row['image_address'] ?>" alt="image not available" class="product-image"><br>
-                <p >
-                    R.s.
-                    <?= $row['price'] ?>
-                </p>
-                <p>
-                    <?= $row['name'] ?>                </p>
-                <!-- <p>
-                    <?= $row['description'] ?>
-                </p> -->
-                
-                <input type="number" id="productQunatity" name="qunatity" placeholder="Quantity"> <br>
-                <button class="add_to_cart" name="add_to_cart" onclick="add_to_cart(<?= $row['id'] ?>,'<?= $row['image_address'] ?>','<?= $row['name'] ?>','<?= $row['price'] ?>');">Add To Cart</button>
+    <div
+        class="containerForProduct">
+        <div class="imageOfProduct" >
+            <img src="<?= $row['image_address'] ?>" alt="image not available" class="product-image"><br>
+        </div>
+        <p class="align-center">
+
+
+            <?= $row['name'] ?>
+        </p>
+        <p class="align-center">
+            (
+            <i>
+                <?= $row['description'] ?>
+            </i>
+            )
+        </p>
+
+        <p class="priceOfProduct">
+            <?php
+                    $fmt = numfmt_create('en_ne', NumberFormatter::CURRENCY);
+                    echo numfmt_format_currency($fmt,  $row['price'], "NPR");
+                    ?>
+        </p>
+
+    </div>
+
+
+    <div style="display: flex; justify-content:center; margin:4px 0;">
+        <b>Quantity: </b>
+        <input type="number" id="productQunatity" name="qunatity" placeholder="Quantity" value="1"> <br>
+    </div>
+    <div style="display: flex; justify-content:center; margin:4px 0; ">
+        <button class="add_to_cart" name="add_to_cart"
+            onclick="add_to_cart(<?= $row['id'] ?>,'<?= $row['name'] ?>',<?= $row['price'] ?>);"
+            >Add To Cart <i
+                class="fa-solid fa-cart-shopping"></i></button>
+    </div>
+
 </div>
 
 <?php
