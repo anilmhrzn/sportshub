@@ -1,11 +1,32 @@
-aa<?php
-if (isset($_POST['hello'])) {
-    echo $_REQUEST['fullName']
-    ?>
-    <script>
-        console.log('dsljfl');
-    </script>
-    <?php
+<!-- TODO: validation is left in register-->
+<?php
+$error_msg = '';
+if (isset($_POST['registerForm'])) {
+    if (empty($_REQUEST['fullName']) || empty($_REQUEST['address']) || empty($_REQUEST['phoneNumber']) || empty($_REQUEST['emailAddress']) || empty($_REQUEST['username']) || empty($_REQUEST['password']) || empty($_REQUEST['reEnteredPassword'])) {
+        $error_msg = 'fields cannot be empty.';
+    }else{
+        if(strlen($_REQUEST['password'])<8){
+            $error_msg = 'Length of the password must be more than 8 characters.';
+        }else{
+            if($_REQUEST['password']!=$_REQUEST['reEnteredPassword']){
+                $error_msg = 'Password and re-entered password does not match.';
+            }
+            else{
+                $password = password_hash($_REQUEST['password'], 
+                PASSWORD_DEFAULT);
+                include './../../includes/db_config.php';
+                $query="insert into customers(name,email,phone_number,address,username,password) values('".$_REQUEST['fullName']."','".$_REQUEST['emailAddress']."',".$_REQUEST['phoneNumber'].",'".$_REQUEST['address']."','".$_REQUEST['username']."','". $password ."')";
+                if(mysqli_query($conn,$query)){
+                    ?>
+                    <script>
+                        alert('Account created sucessfully');
+                        window.location.href="http://localhost/sportshub/pages/files-for-main-content/customer-login.php";
+                    </script>
+                    <?php
+                }
+            }
+        }
+    }
 }
 ?>
 <?php
@@ -34,15 +55,15 @@ session_start();
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
-                                            <input type="text" id="fullName" name="fullName" class="form-control form-control-lg" />
-                                            <label class="form-label" for="firstName">Full Name</label>
+                                            <input type="text" id="fullName" name="fullName" class="form-control form-control-lg" value="<?php if(isset($_REQUEST['fullName'])) echo $_REQUEST['fullName'];?>"/>
+                                            <label class="form-label" for="fullName">Full Name</label>
                                         </div>
 
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
-                                            <input type="text" id="lastName" class="form-control form-control-lg" />
-                                            <label class="form-label" for="lastName">Address</label>
+                                            <input type="text" id="address" name="address" class="form-control form-control-lg" value="<?php if(isset($_REQUEST['address'])) echo $_REQUEST['address'];?>"/>
+                                            <label class="form-label" for="address">Address</label>
                                         </div>
 
                                     </div>
@@ -53,15 +74,14 @@ session_start();
                                     <div class="col-md-6 mb-4 ">
 
                                         <div class="form-outline datepicker w-100">
-                                            <input type="text" class="form-control form-control-lg" id="birthdayDate" />
-                                            <label for="birthdayDate" class="form-label">Phone Number</label>
+                                            <input type="number" class="form-control form-control-lg" id="phoneNumber" name="phoneNumber" value="<?php if(isset($_REQUEST['phoneNumber'])) echo $_REQUEST['phoneNumber'];?>"/>
+                                            <label for="phoneNumber" class="form-label">Phone Number</label>
                                         </div>
 
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
-                                            <input type="email" id="emailAddress"
-                                                class="form-control form-control-lg" />
+                                            <input type="email" id="emailAddress" name="emailAddress" class="form-control form-control-lg" value="<?php if(isset($_REQUEST['emailAddress'])) echo $_REQUEST['emailAddress'];?>"/>
                                             <label class="form-label" for="emailAddress">Email</label>
                                         </div>
 
@@ -72,15 +92,14 @@ session_start();
                                 <div class="row">
                                     <div class="col-md-6 mb-4 ">
                                         <div class="form-outline">
-                                            <input type="text" class="form-control form-control-lg" id="username" />
+                                            <input type="text" class="form-control form-control-lg" id="username" name="username" value="<?php if(isset($_REQUEST['username'])) echo $_REQUEST['username'];?>"/>
 
-                                            <label class="form-label" for="phoneNumber">Username</label>
+                                            <label class="form-label" for="username">Username</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4 ">
                                         <div class="form-outline">
-                                            <input type="password" id="password"
-                                                class="form-control form-control-lg" />
+                                            <input type="password" id="password" name="password" class="form-control form-control-lg" value="<?php if(isset($_REQUEST['password'])) echo $_REQUEST['password'];?>"/>
                                             <label class="form-label" for="password">Password</label>
                                         </div>
                                     </div>
@@ -88,24 +107,27 @@ session_start();
                                 <div class="row">
                                     <div class="col-md-6 mb-4 ">
                                         <div class="form-outline">
-                                            <input type="password" id="phoneNumber"
-                                                class="form-control form-control-lg" />
-                                            <label class="form-label" for="phoneNumber">Re-enter Password</label>
+                                            <input type="password" id="reEnteredPassword" name="reEnteredPassword" class="form-control form-control-lg" value="<?php if(isset($_REQUEST['reEnteredPassword'])) echo $_REQUEST['reEnteredPassword'];?>"/>
+                                            <label class="form-label" for="reEnteredPassword">Re-enter Password</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4 ">
                                         <div class=" form-outline">
-                                            <input class="btn btn-primary btn-lg" name="hello" type="submit" value="Submit" />
-                                            <input type="submit" value="ss">
+                                            <input class="btn btn-primary btn-lg" name="registerForm" type="submit" value="Submit" />
+                                            <!-- <input type="submit" value="ss"> -->
                                         </div>
 
                                     </div>
                                 </div>
                             </form>
+                            <p style="color:red">
+                            <i>
+
+                                <?= $error_msg ?>
+                            </i>  
+                            </p>
                             <div>
-                                <p class="mb-0">Already have an account? <a
-                                        href="http://localhost/sportshub/pages/files-for-main-content/customer-login.php"
-                                        class="text-white-50 fw-bold">login</a>
+                                <p class="mb-0">Already have an account? <a href="http://localhost/sportshub/pages/files-for-main-content/customer-login.php" class="text-white-50 fw-bold">login</a>
                                 </p>
 
                             </div>
@@ -114,13 +136,15 @@ session_start();
                 </div>
             </div>
         </div>
-    </section><?php if (isset($_SESSION['eMsg'])) echo $_SESSION['eMsg']; ?>
+    </section>
+
+    <!-- <?php if (isset($_SESSION['eMsg'])) echo $_SESSION['eMsg']; ?>
     <?php if (isset($_SESSION['eMsg'])) {
     ?>
     <script>
     alert("<?= $_SESSION['eMsg']; ?>");
     </script>
-    <?php  } ?>
+    <?php  } ?> -->
 </body>
 
 </html>

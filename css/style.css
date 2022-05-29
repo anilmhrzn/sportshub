@@ -210,7 +210,7 @@ nav.display-grid {
 /*for  price Of Product */
 .priceOfProduct {
   text-align: center;
-  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 /* text-align:center */
@@ -226,8 +226,8 @@ nav.display-grid {
 
 /* for add to cart  */
 .add_to_cart {
-  font-size: 1.5rem;
-  width: 100%;
+  /* font-size: 1rem; */
+  width: 50%;
   padding: 4px;
   display: flex;
   justify-content: space-around;
@@ -248,6 +248,8 @@ div.popular-picks-grid {
 .inside-popular-picks-grid {
   border: 1px solid black;
   padding: 2vh;
+  /* height: 20px;
+  width: 20px; */
 }
 .popular-picks > h3 {
   text-align: center;
@@ -322,7 +324,7 @@ div.popular-picks-grid {
   box-shadow: inset -12px -8px 40px #464646;
 }
 .product-image {
-  width: 15vw;
+  width: 7vw;
 }
 .grid-four > div > button,
 .grid-four > div > input {

@@ -22,7 +22,7 @@ if (mysqli_num_rows($result) > 0) {
 
             <?= $row['name'] ?>
         </p>
-        <p class="align-center">
+        <p class="align-center" style="font-size: 0.8rem;">
             (
             <i>
                 <?= $row['description'] ?>

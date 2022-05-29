@@ -10,9 +10,11 @@
         </div>
     </div> -->
 <a class="btn btn-dark m-5" href="./index.php" role="button">Back</a> <span>Products Information</span>
+<div>
 
+</div>
 <div id="productsShowing" class="h-100 d-flex justify-content-center align-items-center">
-    <table class="table table-dark table-hover m-3" style="width: auto;">
+    <table class="table table-dark table-hover m-3"style="width:70vw;">
     <!-- table table-dark table-hover m-3 -->
         <th style="text-align: center;">Name</th>
         <th style="text-align: center;">Category</th>
@@ -33,7 +35,7 @@
                     <td><?= $row['categoriesName']; ?></td>
                     <td><?= $row['subCategoriesName']; ?></td>
                     <td><?= $row['productsPrice']; ?></td>
-                    <td><?= $row['productsDescription']; ?></td>
+                    <td style="width: 50px;"><?= $row['productsDescription']; ?></td>
                     <td>
                         <a class="btn btn-warning mx-4" href="./add_new_product.php?id=<?= $row['id'] ?>">
                             <!-- <button type="button" class="btn btn-warning mx-4"> -->

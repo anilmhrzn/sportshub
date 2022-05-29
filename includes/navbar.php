@@ -69,12 +69,12 @@ session_start();
                 } else {
                 ?>
                     <ul class="dropdown-blocks remove-list-style">
-                        <li onclick="logout_function()">
+                        <li style="text-align: center;" onclick="logout_function()">
                             <span>Logout</span>
                         </li>
-                        <li>
-                            <span>Change Password</span>
-                        </li>
+                        <!-- <li style="text-align: center;" onclick="logout_function()">
+                            <span> Change <br>Password</span>
+                        </li> -->
                     </ul>
                 <?php
                 }
@@ -174,7 +174,7 @@ session_start();
                 <?php
             } else {
                 include 'db_config.php';
-                $sql = "insert into feedback_tbl(feedbacks) values(" . trim($_REQUEST['feedback']) . ")";
+                $sql = "insert into feedback_tbl(feedbacks) values('" . trim($_REQUEST['feedback']) . "')";
                 if (mysqli_query($conn, $sql)) {
 
                 ?>

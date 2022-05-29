@@ -6,14 +6,14 @@ if (isset($_POST['login'])) {
   $username = mysqli_real_escape_string($conn, $_POST['username-for-login']);
   $password = mysqli_real_escape_string($conn, $_POST['password-for-login']);
 
-  $sql = "SELECT id , username , password FROM customers where username='$username'";
+  $sql = "SELECT id , username , password FROM admin where username='$username'";
   $result = $conn->query($sql);
   if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     if (password_verify($password, $row['password'])) {
 
-      $_SESSION['USER_ID'] = $row['id'];
-      $_SESSION['USER_NAME'] = $row['username'];
+      $_SESSION['ADMIN_USER_ID'] = $row['id'];
+      $_SESSION['ADMIN_USER_NAME'] = $row['username'];
       header('location:./../index.php');
     } else {
       $error_message = "Invalid Username or Password.";
@@ -45,9 +45,8 @@ if (isset($_POST['login'])) {
 
               <form action="" id="for-form" method="POST" class="mb-md-5 mt-md-4 pb-5">
 
-                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                <h2 class="fw-bold mb-2 text-uppercase">Admin Login</h2>
                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
-
                 <div class="form-outline form-white mb-4">
                   <input type="text" class="form-control form-control-lg" name="username-for-login" />
                   <label class="form-label" for="typeEmailX">Username</label>
@@ -57,15 +56,13 @@ if (isset($_POST['login'])) {
                   <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password-for-login" />
                   <label class="form-label" for="typePasswordX">Password</label>
                 </div>
-
+                <button class="btn btn-outline-light btn-lg px-5" name="login" type="submit" id="login">Login</button>
+                <br>
+                <br>
+                <br>
                 <p id="error-message" class="small mb-5 pb-lg-2 text-danger">
                   <?php echo $error_message; ?>
                 </p>
-                <button class="btn btn-outline-light btn-lg px-5" name="login" type="submit" id="login">Login</button>
-                <div>
-                  <p class="mb-0">Don't have an account? <a href="http://localhost/sportshub/pages/files-for-main-content/customer-register.php" class="text-white-50 fw-bold">Register</a>
-                  </p>
-                </div>
               </form>
 
 
@@ -75,49 +72,6 @@ if (isset($_POST['login'])) {
       </div>
     </div>
   </section>
-
-  <!--     
-<div>
-
-    <div class="companyNameCenter">
-        <a id="companyname" class="company-name"> Sports Hub </a>
-    </div>
-    <div class="whole-page">
-        <form action="" id="for-form" method="POST">
-            <h1 class="text-align-center"> login form</h1>
-            <p>
-                <label for="email">
-                    Username:
-
-                </label>
-                <br> <input type="text" name="username-for-login" id="username-for-login" class="login-error">
-            </p>
-            <p>
-                <label for="password">
-                    Password:
-                </label>
-                <br> <input type="password" name="password-for-login" id="password-for-login" class="login-error">
-            </p>
-            <p id="error-message">
-                <?php echo $error_message; ?>
-            </p>
-            <p class="text-align-center">
-
-                <input type="submit" name="login" value="login">
-            </p>
-            </p>
-        </form>
-
-    </div>
-    <p>
-        <a href="http:\\localhost\FoodOrdering\for-login-register\registration-form.php">Create A New Account</a>
-        <br>
-        <span>
-            <?= (isset($_SESSION['notice'])) ?  $_SESSION['notice'] : ''; ?>
-            <?= (isset($_SESSION['eMsg'])) ? $_SESSION['eMsg'] : '' ?>
-        </span>
-    </p>
-</div> -->
 </body>
 
 </html>

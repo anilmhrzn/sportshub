@@ -20,7 +20,7 @@ foreach ($_SESSION['cart'] as $key => $value) {
     }}
 $query="Insert into orders(paymentRequestId,cus_id,total_price) values('".$paymentRequestId."',".$_SESSION['USER_ID'].",".$grandTotal.")";
 if(mysqli_query($conn,$query)){
-    // echo $query." this is query for orders <br/>".$_SESSION['USER_ID']."<br/>".$grandTotal."this can be removed from 23 line of paymentMethod.php page";
+    echo $query." this is query for orders <br/>".$_SESSION['USER_ID']."<br/>".$grandTotal;
 }
     // $query="Insert into orders(paymentRequestId,total_price) values('".$paymentRequestId."',".$grandTotal.")";
     // mysqli_close($conn);

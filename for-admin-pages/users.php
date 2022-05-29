@@ -10,7 +10,7 @@
         <th>Options</th>
         <?php
         include './../includes/db_config.php';
-        $query = "SELECT id,name,email,phone_number,address,username FROM customers where status=1";
+        $query = "SELECT id,name,email,phone_number,address,username FROM customers ";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
 

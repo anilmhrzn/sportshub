@@ -27,7 +27,7 @@ if($_GET){
 // echo 'hey';
 $id=$_REQUEST['id'];
 include './../../includes/db_config.php';
-$query="SELECT * from customers   WHERE `customers`.`id` = $id AND `status` = 1";
+$query="SELECT * from customers   WHERE `customers`.`id` = $id ";
 $result=mysqli_query($conn,$query);
         if (mysqli_num_rows($result) > 0) {
         while($row=mysqli_fetch_assoc($result)){

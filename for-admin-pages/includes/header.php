@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['ADMIN_USER_ID'] ) && !isset($_SESSION['ADMIN_USER_NAME']))
+{
+    header('location:./../for-admin-pages/includes/admin-login.php');
+}
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
