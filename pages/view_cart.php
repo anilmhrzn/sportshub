@@ -18,6 +18,11 @@ if (!isset($_SESSION['USER_ID']) && !isset($_SESSION['USER_NAME'])) {
             padding: 10px;
         }
     </style>
+    <div id="forBill" style="display:flex;justify-content:center;align-items:center;">
+        <div>
+
+        </div>
+    </div>
     <div style="display:flex;justify-content:center;align-items:center;margin:30px">
         <table class='view-cart-table'>
             <tr>

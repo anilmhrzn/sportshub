@@ -38,10 +38,11 @@ include './../includes/navbar.php'; ?>
                 if (mysqli_query($conn, $sql)) { ?>
                     <script>
                         alert("Transaction completed successfully.Your products will be delivered shortly.");
+                        location.href ="http://localhost/sportshub/payment/bill.php";
                         <?php
-                        unset($_SESSION['cart']);
+                        // unset($_SESSION['cart']);
+
                         ?>
-                        location.href = "http://localhost/sportshub/pages/index.php"
                     </script><?php
                             } else { ?>
                     <script>

@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 $error_message = '';
 if (isset($_POST['login'])) {

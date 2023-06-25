@@ -1,4 +1,4 @@
-<a class="btn btn-dark m-5" href="./index.php" role="button">Back</a><span>Users Information</span>
+<a class="btn btn-dark m-2" href="./index.php" role="button">Back</a><span>Users Information</span>
 <div class="h-100 d-flex justify-content-center align-items-center">
 
     <table class="table table-dark table-hover m-3" style="width: auto;">

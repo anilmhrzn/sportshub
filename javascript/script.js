@@ -17,6 +17,20 @@ window.onload = function abc() {
   );
   xhttp.send();
 };
+function changePassword(){
+  window.location.href="http://localhost/sportshub/pages/files-for-main-content/change_password.php";
+  // alert('sdf');
+  // $.ajax(
+  //   {
+  //     url:"http://localhost/sportshub/pages/files-for-main-content/change_password.php",
+      
+  //     type:'GET',
+  //     success:function(res){
+  //       $('#for-change-password').html(res);
+  //     }
+  //   }
+  // )
+}
 function loadHomePage() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -165,6 +179,10 @@ function showProductsOfGivenSubcategories(categoryName, sub_categories_name) {
 
 function add_to_cart(id, name, price) {
   var productQunatity = document.getElementById("productQunatity").value;
+  if( productQunatity < 1){
+    alert('Quantity cannot be negative');
+    document.getElementById("productQunatity").focus();
+  }else{
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -180,8 +198,7 @@ function add_to_cart(id, name, price) {
     }
   };
   xhttp.open(
-    "get",
-    "./../pages/files-for-main-content/insert_into_cart.php?productId=" +
+    "get","./../pages/files-for-main-content/insert_into_cart.php?productId=" +
       id +
       "&productName=" +
       name +
@@ -192,6 +209,7 @@ function add_to_cart(id, name, price) {
     true
   );
   xhttp.send();
+}
 }
 
 // view cart function

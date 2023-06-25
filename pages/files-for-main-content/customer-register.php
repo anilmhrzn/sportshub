@@ -1,4 +1,4 @@
-<!-- TODO: validation is left in register-->
+
 <?php
 $error_msg = '';
 if (isset($_POST['registerForm'])) {

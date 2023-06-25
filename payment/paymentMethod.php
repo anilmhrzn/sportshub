@@ -22,14 +22,14 @@ $query="Insert into orders(paymentRequestId,cus_id,total_price) values('".$payme
 if(mysqli_query($conn,$query)){
     // echo $query." this is query for orders <br/>".$_SESSION['USER_ID']."<br/>".$grandTotal."this can be removed from 23 line of paymentMethod.php page";
 }
+// TODO: watch our for database changes made recently it might bring up mistakes
     // $query="Insert into orders(paymentRequestId,total_price) values('".$paymentRequestId."',".$grandTotal.")";
     // mysqli_close($conn);
+    $query="select o_id from orders where paymentRequestId='".$paymentRequestId."' AND cus_id=".$_SESSION['USER_ID']." AND total_price=".$grandTotal;
+    $row=mysqli_fetch_assoc(mysqli_query($conn,$query));
 foreach ($_SESSION['cart'] as $key => $value) {
-    $query="Insert into products_orderd(paymentRequestId,product_id) values('".$paymentRequestId."',".$value['productId'].")";
+    $query="Insert into products_orderd(o_id,product_id,quantity,price) values('".$row['o_id']."',".$value['productId'].",".$value['productQuantity'].",".$value['productPrice'].")";
     mysqli_query($conn,$query);
-    // echo " this is query for products_ordered <br/>";
-    // echo $query;
-    // mysqli_close($conn);
 }
     ?>
 <div id="paymentMethod" class="paymentMethodsContainer">
@@ -57,9 +57,8 @@ foreach ($_SESSION['cart'] as $key => $value) {
 <script>
     function myFunction(){
         alert('You will be notified about your delivery time via phone call. Please wait Patiently.');
-        window.location.href="http://localhost/sportshub/pages/index.php"
+        window.location.href="http://localhost/sportshub/payment/bill.php"
         <?php
-        unset($_SESSION['cart']);
         ?>
         
         }

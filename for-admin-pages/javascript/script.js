@@ -149,4 +149,131 @@ function removeProduct(id){
       );
     xhttp.send();     
 }
-  
+
+function showOrders(){
+  $.ajax(
+    {
+      url:"http://localhost/sportshub/for-admin-pages/for_functions/view_orders.php",
+      type:'GET',
+      success:function(res){
+        // alert('hello');
+        $('#mainPart').html(res);
+      }
+    }
+  )
+}
+
+function showFeedbacks(){
+  $.ajax(
+    {
+      url:"http://localhost/sportshub/for-admin-pages/for_functions/view_feedbacks.php",
+      type:'GET',
+      success:function(res){
+        // alert('hello');
+        $('#mainPart').html(res);
+      }
+    }
+  )
+}
+function feedbackPage(page){
+  $.ajax(
+    {
+      url:"http://localhost/sportshub/for-admin-pages/for_functions/view_feedbacks.php?page="+page,
+      type:'GET',
+      success:function(res){
+        // alert('hello');
+        $('#mainPart').html(res);
+      }
+    }
+  )
+}
+function showCategories(){
+  $.ajax(
+    {
+      url:"http://localhost/sportshub/for-admin-pages/for_functions/view_categories.php",
+      type:'GET',
+      success:function(res){
+        // alert('hello');
+        $('#mainPart').html(res);
+      }
+    }
+  )
+}
+function selectCategories(name){
+  $.ajax(
+    {
+      url:"http://localhost/sportshub/for-admin-pages/for_functions/view_subCategories.php?category="+name,
+      type:'GET',
+      success:function(res){
+        // alert('hello');
+        $('#mainPart').html(res);
+      }
+    }
+  )
+}
+function selectSubCategories(category,subCategory){
+  $.ajax(
+    {
+      url:"http://localhost/sportshub/for-admin-pages/for_functions/view_product_of_subCategories.php?category="+category+'&subCategory='+subCategory,
+      type:'GET',
+      success:function(res){
+        // alert('hello');
+        $('#mainPart').html(res);
+      }
+    }
+  )
+}
+function orderPage(page){
+  $.ajax(
+    {
+      url:"http://localhost/sportshub/for-admin-pages/for_functions/view_orders.php?page="+page,
+      type:'GET',
+      success:function(res){
+        // alert('hello');
+        $('#mainPart').html(res);
+      }
+    }
+  )
+}
+
+function changeDeliveryStatus(order_id,page_no){
+  $.ajax(
+    {
+      url:"http://localhost/sportshub/for-admin-pages/for_functions/delivery_status.php",
+      type:'POST',
+      data:{o_id:order_id},
+      success:function(res){
+        // alert('hello');
+        orderPage(page_no);
+        // $('#delivery_status').html(res);
+      }
+    }
+  )
+}
+function viewProfileOfTheCustomer(cus_id){
+  $.ajax(
+    {
+      url:"http://localhost/sportshub/for-admin-pages/for_functions/profile_of_the_customers.php?cus_id="+cus_id,
+      type:'GET',
+      success:function(res){
+        // alert('hello');
+        $('#display_part').html(res);
+      }
+    }
+  )
+}
+function hideProfile(){
+  $('#display_part').html('');
+}
+// function viewProductsInOrder(order_id){
+//   $.ajax(
+//     {
+//       url:"http://localhost/sportshub/for-admin-pages/for_functions/view_ordered_item.php?o_id="+order_id,
+//       type:'GET',
+//       success:function(res){
+//         $('#display_part').html(res);
+        
+//       }
+//     }
+//   )
+// }

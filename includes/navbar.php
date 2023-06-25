@@ -26,7 +26,9 @@ session_start();
                     <?php include './../pages/for-dropdown-contents/for_list_of_categories.php'; ?>
                 </ul>
             </li>
-            <li class="for-feedback">
+            <?php if (isset($_SESSION['USER_ID']) && isset($_SESSION['USER_NAME'])) {
+?>
+<li class="for-feedback">
                 <span>
                     Feedback
                 </span>
@@ -39,6 +41,9 @@ session_start();
                     </form>
                 </ul>
             </li>
+<?php
+}?>
+            
         </ul>
         <ul class="remove-list-style flex-justify-space-between searcbar-login-logout">
             <li>
@@ -72,9 +77,9 @@ session_start();
                         <li style="text-align: center;" onclick="logout_function()">
                             <span>Logout</span>
                         </li>
-                        <!-- <li style="text-align: center;" onclick="logout_function()">
+                        <li style="text-align: center;" onclick="changePassword();">
                             <span> Change <br>Password</span>
-                        </li> -->
+                        </li>
                     </ul>
                 <?php
                 }
@@ -174,7 +179,7 @@ session_start();
                 <?php
             } else {
                 include 'db_config.php';
-                $sql = "insert into feedback_tbl(feedbacks) values('" . trim($_REQUEST['feedback']) . "')";
+                $sql = "insert into feedback_tbl(c_id,feedbacks) values(" .isset($_SESSION['USER_ID']).",'". trim($_REQUEST['feedback']) . "')";
                 if (mysqli_query($conn, $sql)) {
 
                 ?>
@@ -183,6 +188,7 @@ session_start();
                     </script>
                 <?php
                 } else {
+                    echo $sql;
                 ?>
                     <script>
                         alert('Please give us feedback on our social sites or call at +997-9823673702');
